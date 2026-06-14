@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pomodoro Timer — Técnica Pomodoro para productividad. App web vanilla HTML/CSS/JS.">
+  <title>🍅 Pomodoro Timer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-left">
+      <h1 class="logo">🍅 <span class="logo-text">Pomodoro</span></h1>
+    </div>
+    <div class="header-right">
+      <button id="theme-toggle" class="btn btn-icon" title="Alternar tema (T)" aria-label="Alternar tema">
+        <span class="icon-theme">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="timer-section" aria-label="Temporizador Pomodoro">
+
+      <!-- Modos -->
+      <div class="mode-selector" role="tablist" aria-label="Modos del temporizador">
+        <button class="mode-btn active" data-mode="work" role="tab" aria-selected="true">Trabajo</button>
+        <button class="mode-btn" data-mode="short" role="tab" aria-selected="false">Pausa Corta</button>
+        <button class="mode-btn" data-mode="long" role="tab" aria-selected="false">Pausa Larga</button>
+      </div>
+
+      <!-- Timer circular -->
+      <div class="timer-display">
+        <svg class="progress-ring" viewBox="0 0 300 300" aria-hidden="true">
+          <circle class="progress-ring__bg" cx="150" cy="150" r="130" />
+          <circle class="progress-ring__fill" cx="150" cy="150" r="130"
+            stroke-dasharray="816.81" stroke-dashoffset="0" />
+        </svg>
+        <div class="timer-content">
+          <span class="timer-time" id="timer-display">25:00</span>
+          <span class="timer-label" id="timer-label">🍅 Trabajo</span>
+          <div class="pomodoro-count" id="pomodoro-count">
+            <span class="pomodoro-dot active"></span>
+            <span class="pomodoro-dot"></span>
+            <span class="pomodoro-dot"></span>
+            <span class="pomodoro-dot"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles -->
+      <div class="controls">
+        <button id="btn-start" class="btn btn-primary btn-lg">▶ Iniciar</button>
+        <button id="btn-reset" class="btn btn-secondary" disabled>↻ Reiniciar</button>
+      </div>
+
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="stats-section" aria-label="Estadísticas">
+      <h2 class="stats-title">📊 Estadísticas</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-value" id="stat-today">0</span>
+          <span class="stat-label">Hoy</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-week">0</span>
+          <span class="stat-label">Esta semana</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-total">0</span>
+          <span class="stat-label">Total</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-streak">0</span>
+          <span class="stat-label">Racha (días)</span>
+        </div>
+      </div>
+      <button id="btn-reset-stats" class="btn btn-text">↺ Reiniciar estadísticas</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Hecho con ❤️ — Proyecto Diario #1 · 2026-06-09</p>
+  </footer>
+
+  <script src="js/timer.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
